@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace ClassLibrary1
             var client = (eBayServiceReference1.ProductServicePortTypeClient)null;  
             try
             {
-                Console.Write("in call ebay"); 
+                Debug.WriteLine("in call ebay"); 
                 client = new eBayServiceReference1.ProductServicePortTypeClient();
                 var productRequest = new eBayServiceReference1.AddProductsRequest();
 
