@@ -1,0 +1,3768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns="http://schemas.xmlsoap.org/wsdl/" name="ProductService" targetNamespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation />
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+      <xsd:element name="findProductsRequest" type="ns0:FindProductsRequest" />
+      <xsd:element name="findProductsResponse" type="ns0:FindProductsResponse" />
+      <xsd:complexType name="FindProductsRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This is a request object containing input for the find product operation
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Finds products for a given category and search criteria.
+						</Summary>
+            <RelatedCallsOther>
+              <ApiNickname>ProductMetadata</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/product-metadata/CallRef</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>getProductSearchNames</Name>
+                <Summary>Retrieves all properties available for a given catalog-enabled category.</Summary>
+              </RelatedCall>
+              <RelatedCall>
+                <Name>getProductSearchValues</Name>
+                <Summary>Retrieves property values for the specified property.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="productSearch" type="ns0:ProductRequest">
+                <xsd:annotation>
+                  <xsd:documentation>
+										User can findproducts for one
+										catalog at a time or batch up to
+										10 catalogs.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxOccurs>10</MaxOccurs>
+                    <CallInfo>
+                      <CallName>findProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="getProductDetailsRequest" type="ns0:GetProductDetailsRequest" />
+      <xsd:element name="getProductDetailsResponse" type="ns0:GetProductDetailsResponse" />
+      <xsd:complexType name="GetProductDetailsRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						Retrieve product details for the specified product ID, including whether 
+						the product has fitment information or not.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Retrieve product details for the specified product ID, including whether 
+							the product has fitment information or not. 
+						</Summary>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="productDetailsRequest" type="ns0:ProductDetailsRequestType">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Contains product details.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductDetails</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="GetProductDetailsResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for product details.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="product" type="ns0:Product">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Details for a single product.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductDetails</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FindProductsResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Response container for the product search results.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="productSearchResult" type="ns0:ProductResponse">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Container for the products that matched the search criteria.
+										The data for each product is returned in individual containers, if
+										any matches were found.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findProducts</CallName>
+                      <CallName>findProductsByCompatibility</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="findProductsByCompatibilityRequest" type="ns0:FindProductsByCompatibilityRequest" />
+      <xsd:element name="findProductsByCompatibilityResponse" type="ns0:FindProductsResponse" />
+      <xsd:complexType name="FindProductsByCompatibilityRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This is a request object containing input for the 
+						findProductsByCompatibility operation. 
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Finds products for the specified category, catalog property name-value 
+							pairs, and compatibility property name-value pairs.
+						</Summary>
+            <RelatedCallsOther>
+              <ApiNickname>ProductMetadata</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/product-metadata/CallRef</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>getCompatibilitySearchNames</Name>
+                <Summary>Retrieves all compatibilities available for a given compatibility-enabled category.</Summary>
+              </RelatedCall>
+              <RelatedCall>
+                <Name>getCompatibilitySearchValues</Name>
+                <Summary>Retrieves values for the specified compatibility.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="productByCompatibilitySearch" type="ns0:ProductByCompatibilityRequest">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Container for an individual product search query.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findProductsByCompatibility</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="getProductCompatibilitiesRequest" type="ns0:GetProductCompatibilitiesRequest" />
+      <xsd:element name="getProductCompatibilitiesResponse" type="ns0:GetProductCompatiblitiesResponse" />
+      <xsd:complexType name="GetProductCompatibilitiesRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						Request object for getProductFitmentDetails operation.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Returns all available compatibility details for the specified product. 
+						</Summary>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="productIdentifier" type="ns0:ProductIdentifier">
+                <xsd:annotation>
+                  <xsd:documentation>
+										The ProductIdentifierType and a
+										value for one of the supported
+										ProductIdentifierTypes which are
+										unique across all sites (ePID,
+										MementoString)
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="paginationInput" type="ns0:PaginationInput">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Controls the pagination of the result set. Child elements specify the
+										maximum number of products to return per call and the page of
+										data to return. Controls the number of products returned in the
+										response, but does not specify the amount of data to return for each
+										product.
+										&lt;br&gt;&lt;br&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+										No more than 10,000 products can be retrieved for a given search, 
+										regardless of how many matches are found. This limit is enforced 
+										by the maximum page number allowed (100) and the maximum entries per 
+										page allowed (20). &lt;/span&gt;
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="applicationPropertyFilter" type="ns0:PropertyValue">
+                <xsd:annotation>
+                  <xsd:documentation>
+										This will contain the property name value pairs of the application,
+										such as a particular vehicle make and model. Application property
+										filters are specified as name-value pairs.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="dataset" type="xsd:token">
+                <xsd:annotation>
+                  <xsd:documentation>
+										This will define what are properties that will be returned for this
+										catelog-enabled category. 
+										&lt;dl&gt;
+										&lt;dt&gt;
+											&lt;strong&gt;Dataset values:&lt;/strong&gt;
+										&lt;/dt&gt;
+										&lt;dt&gt;
+											DisplayableProductDetails
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properies for use in a user interface to describe products.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											DisplayableSearchResults
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in results for product searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Searchable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Sortable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties that are suitable for sorting.
+										&lt;/dd&gt;
+										&lt;/dl&gt;
+										User can either enter dataset name or enter individual property names
+										(datasetPropertyName) from the dataset. Only one should be preset at 
+										a time.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <ListBasedOn />
+                    <Default>
+                    </Default>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="sortOrder" type="ns0:CompatibilitySort">
+                <xsd:annotation>
+                  <xsd:documentation>
+										We need to allow multiple sort
+										orders. This is very specific to
+										fitment. We allow the caller
+										sorty by Make + Model + year. To
+										start with we will only allow 5
+										sorts.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="disabledProductFilter" type="ns0:ProductStatus">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Specifies whether or not to filter out the products which
+										are disabled for selling on eBay, disabled for product reviews, or
+										disabled for selling on half.com.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="1" maxOccurs="unbounded" name="datasetPropertyName" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Individual property name from the dataset. You can either enter
+										dataset name or enter individual property names from the dataset.
+										Only one should be preset at a time.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <ListBasedOn />
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="GetProductCompatiblitiesResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Response object for getProductFitmentDetails operation.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="paginationOutput" type="ns0:PaginationOutput">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Indicates the pagination of the result set. Child elements indicate
+										the maximum number of compatibilityDetails nodes returned per
+										response and which page of data has been returned.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="compatibilityDetails" type="ns0:Product">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Compatibility details for a single product.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductCompatibilities</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="StockPhotoURL">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" />
+          </xsd:appinfo>
+          <xsd:documentation>
+						Thumbnail and standard stockphoto URLs.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="thumbnail" type="ns0:URIValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Fully qualified URL for the thumbnail of a stock image (if any) that is
+								associated with a catalog product. The URL is for the image eBay usually
+								displays in product search results (usually 40px tall). It may be helpful
+								to calculate the dimensions of the photo programmatically before
+								displaying it. Only returned if a URL is available for the product.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>400</MaxLength>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="standard" type="ns0:URIValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Fully qualified URL for a stock image (if any) that is associated with a
+								catalog product. The URL is for the image eBay usually displays in
+								product search results (usually 70px tall). It may be helpful to
+								calculate the dimensions of the photo programmatically before displaying
+								it. Only returned if a URL is available for the product.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>400</MaxLength>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompatibilityPropertyFilter">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for a single compatibility filter.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="propertyFilter" type="ns0:PropertyValue">
+              <xsd:annotation>
+                <xsd:documentation>
+									Filter consisting of name-value pairs that describe compatibilities for
+									a product.
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <CallInfo>
+                    <CallName>findProductsByCompatibility</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="AAIA" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>
+									Not used. 
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <TagStatus>Ignore</TagStatus>
+                  <CallInfo>
+                    <NoCalls />
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" maxOccurs="1" name="HSNTSN" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>
+									Not used. 
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <TagStatus>Ignore</TagStatus>
+                  <CallInfo>
+                    <NoCalls />
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for request data used in product search calls.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="invocationId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A unique identifer for a given product request. Use invocationId to
+								prevent the submission of duplicate data. In the event of a partial
+								failure, the invocation ID can also be used to identify a product request
+								that did not succeed.
+								&lt;br&gt;&lt;br&gt;
+								If the same invocationId is passed in more than once in the same request,
+								then an error will be returned. The identifier must be a number .
+							</xsd:documentation>
+              <xsd:appinfo>
+                <Min>-9223372036854775808</Min>
+                <Max>9223372036854775807</Max>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="categoryId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies the category from which you want to retrieve product details.
+								When categoryId is used with findProducts, the category must be catalog-
+								enabled, or it will contain no product data, and the request will fail.
+								When categoryId is used with findProductsByCompatibility, the category
+								must be compatibility-enabled. A category must be catalog-enabled to be compatibility-enabled.
+								&lt;br&gt;&lt;br&gt;
+								Your request must contain categoryId and/or keywords.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>10</MaxLength>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <SeeLink>
+                  <URL>http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategory2CS.html</URL>
+                  <Title>GetCategory2CS</Title>
+                  <For>information to identify catalog-enabled categories.</For>
+                </SeeLink>
+                <SeeLink>
+                  <URL>http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html</URL>
+                  <Title>GetCategoryFeatures</Title>
+                  <For>information to identify compatibility-enabled categories.</For>
+                </SeeLink>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="keywords" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Use keywords to refine your product search query. Products whose catalog
+								searchable property values contain these keywords will be returned.
+								Returned products must match both the specified keywords and the name-
+								value pairs constraint.
+								&lt;br&gt;&lt;br&gt;
+								Keyword searches are not case sensitive. Keywords are used for exact word
+								matching only, wildcards or search string modifiers are not supported.
+								&lt;br&gt;&lt;br&gt;
+								Your request must contain categoryId and/or keywords.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>350. The maximum length for a single word is 98</MaxLength>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="propertyFilter" type="ns0:PropertyValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								One or more name-value pairs that describe the product.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="sortOrder" type="ns0:SortOrder">
+            <xsd:annotation>
+              <xsd:documentation>
+								Sort Order for the result set. Any of the searchable property can be used
+								to specify the sort order. If no sort order is specified then default
+								sort order(popularity descending) will be applied.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="dataset" type="xsd:token">
+            <xsd:annotation>
+              <xsd:documentation>
+								This will define what are properties that will be returned for this
+								catelog-enabled category. 
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;Dataset values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									DisplayableProductDetails
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properies for use in a user interface to describe products.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									DisplayableSearchResults
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in results for product searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Searchable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Sortable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties that are suitable for sorting.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+								User can either enter dataset name or enter individual property names
+								(datasetPropertyName) from the dataset. Only one should be preset at 
+								a time.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <ListBasedOn />
+                <Default>Searchable</Default>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="datasetPropertyName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Individual property name from the dataset. You can either enter
+								dataset name or enter individual property names from the dataset.
+								Only one should be preset at a time.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength />
+                <MaxOccurs />
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="paginationInput" type="ns0:PaginationInput">
+            <xsd:annotation>
+              <xsd:documentation>
+								Controls the pagination of the result set. Child elements specify the
+								maximum number of products to return per call and the page of
+								data to return. Controls the number of products returned in the
+								response, but does not specify the amount of data to return for each
+								product.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+								No more than 10,000 products can be retrieved for a given search, 
+								regardless of how many matches are found. This limit is enforced 
+								by the maximum page number allowed (100) and the maximum entries per 
+								page allowed (20). &lt;/span&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="productStatusFilter" type="ns0:ProductStatus">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies whether or not to filter out the products which
+								are disabled for selling, product reviews, or use on half.com.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for product information returned by product search calls.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="products" type="ns0:Product">
+            <xsd:annotation>
+              <xsd:documentation>
+								Container for multiple products.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="paginationOutput" type="ns0:PaginationOutput">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates the pagination of the result set. Child elements indicate the
+								maximum number of productSearchResult nodes returned per response and
+								which page of data has been returned.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="invocationId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A unique identifer for a given product response, corresponding to a 
+								specific product request. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <Min>-9223372036854775808</Min>
+                <Max>9223372036854775807</Max>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductByCompatibilityRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This is the base class for product queries by compatible application. 
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="applicationPropertyFilter" type="ns0:CompatibilityPropertyFilter">
+            <xsd:annotation>
+              <xsd:documentation>
+								This will contain the property name-value pairs of the application. For
+								example, an application property filter can consist of name-value pairs
+								that describe a particular make and model of a car.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="productSearch" type="ns0:ProductRequest">
+            <xsd:annotation>
+              <xsd:documentation>
+								User can findproducts for one
+								catalog at a time or batch up to
+								10 catalogs.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductDetailsRequestType">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for request data for retrieving product details.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="productIdentifier" type="ns0:ProductIdentifier">
+            <xsd:annotation>
+              <xsd:documentation>
+								The product identifier type and value. Product identifiers, such as ePID
+								values or ISBN values, are unique across all sites.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="datasetPropertyName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Individual property name from the dataset. You can either enter
+								dataset name or enter individual property names from the dataset.
+								Only one should be preset at a time.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <ListBasedOn />
+                <CallInfo>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="dataset" type="xsd:token">
+            <xsd:annotation>
+              <xsd:documentation>
+								This will define what are properties that will be returned for this
+								catelog-enabled category. 
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;Dataset values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									DisplayableProductDetails
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properies for use in a user interface to describe products.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									DisplayableSearchResults
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in results for product searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Searchable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties for use in searches.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Sortable
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Properties that are suitable for sorting.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+								User can either enter dataset name or enter individual property names
+								(datasetPropertyName) from the dataset. Only one should be preset at 
+								a time.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <ListBasedOn />
+                <CallInfo>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="productStatusFilter" type="ns0:ProductStatus">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies whether or not to filter out the products which are disabled
+								for selling on eBay, disabled for product reviews, or disabled for
+								selling on half.com.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BaseServiceRequest" abstract="true">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+          <xsd:documentation>
+						This is the base class for request container for
+						all service operations.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="AckValue">
+        <xsd:annotation>
+          <xsd:documentation>
+						Indicates whether the error is a severe error (causing the request to fail)
+						or an informational error (a warning) that should be communicated to the
+						user.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Success">
+            <xsd:annotation>
+              <xsd:documentation>
+								The request that triggered the error was not processed successfully. When
+								a serious application-level error occurs, the error is returned instead
+								of the business data.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Failure">
+            <xsd:annotation>
+              <xsd:documentation>
+								The request was processed successfully, but something occurred that may
+								affect your application or the user.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Warning">
+            <xsd:annotation>
+              <xsd:documentation>
+								The request that triggered the error was processed successfully but with
+								some warnings.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="PartialFailure">
+            <xsd:annotation>
+              <xsd:documentation>
+								The request that triggered the error was processed successfully but with
+								some warnings.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="BaseServiceResponse" abstract="true">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+          <xsd:documentation>
+						Base response container for all service operations. Contains error
+						information associated with the request.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="ack" type="ns0:AckValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates whether or not errors or warnings were generated during the
+								processing of the request.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="errorMessage" type="ns0:ErrorMessage">
+            <xsd:annotation>
+              <xsd:documentation>
+								Description of an error or warning that occurred when eBay processed the
+								request. Not returned if the ack value is Success.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="version" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								The release version that eBay used to process the request. Developer
+								Technical Support may ask you for the version value if you work with them
+								to troubleshoot issues.
+								&lt;br&gt;&lt;br&gt;
+								&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+									The version in use is normally the latest release version, as specified
+									in the release notes. Note that eBay releases the API to international
+									sites about a week after the API version is released to the US site.
+								&lt;/span&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="timestamp" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation>
+								This value represents the date and time when eBay processed the request.
+								This value is returned in GMT, the ISO 8601 date and time format (YYYY-
+								MM- DDTHH:MM:SS.SSSZ). See the "dateTime" type for information about the
+								time format, and for details on converting to and from the GMT time zone.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ErrorCategory">
+        <xsd:annotation>
+          <xsd:documentation>
+						There are three categories of error: request errors, application errors,
+						and system errors. Request and application errors are often caused by
+						passing invalid data in the request. System errors are primarily caused by
+						application failures and cannot be corrected by changing request values.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="System">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates that an error has occurred on the eBay system side. For
+								example, a database or server could be down. Inspect the error message to
+								find the cause of the problem. If the problem is on the eBay side, an
+								application can retry the request as-is a reasonable number of times
+								(eBay recommends twice). If the error persists, contact Developer
+								Technical Support. Once the problem has been resolved, the request may be
+								resent in its original form.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Application">
+            <xsd:annotation>
+              <xsd:documentation>
+								An error occurred due to a problem with the request, with the most likely
+								source being the application sending the request. For example, the
+								request is missing a required data element or it contains an invalid
+								field. The problem must be corrected before the request can be resent.
+								Inspect the error message to find the cause of the problem. If the
+								problem is due to an application error, modify the application and resend
+								the request. If the error is due to invalid data, the source of the data
+								must be corrected before you resend the resend request to eBay.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Request">
+            <xsd:annotation>
+              <xsd:documentation>
+								An error occurred due to a problem with the request, with the most likely
+								source being missing or invalid data in the request. The problem must be
+								corrected before the request can be retried. Inspect the error message to
+								find the cause of the problem. If the problem is a result of end-user
+								data, alert the end-user to the problem and provide the means for them to
+								correct the problem. Once the problem is resolved, resend the request to
+								eBay.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ErrorData">
+        <xsd:annotation>
+          <xsd:documentation>
+						A container for error details.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="errorId" type="xsd:long">
+            <xsd:annotation>
+              <xsd:documentation>
+								A unique code that identifies the particular error condition that
+								occurred. Your application can use error codes as identifiers in your
+								customized error-handling algorithms.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="domain" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Name of the domain in which the error occurred.
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;domain values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									Marketplace
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									A business or validation error occurred in the service.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									SOA
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									An exception occurred in the Service Oriented Architecture (SOA) 
+									framework.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="subdomain" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Name of the subdomain in which the error occurred.
+								&lt;dl&gt;
+								&lt;dt&gt;
+									&lt;strong&gt;subdomain values:&lt;/strong&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									MarketplaceCatalog
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is specific to the Marketplace Catalog subdomain.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									MarketplaceCommon
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The error is common to all Marketplace services.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="severity" type="ns0:ErrorSeverity">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates whether the reported problem is fatal (an error) or is less-
+								severe (a warning). Review the error message details for information on
+								the cause.
+								&lt;br&gt;&lt;br&gt;
+								If the request fails and the application is the source of the error (for
+								example, a required element is missing), update the application before
+								you retry the request. If the problem is due to incorrect user data,
+								alert the end-user to the problem and provide the means for them to
+								correct the data. Once the problem in the application or data is
+								resolved, re-send the request to eBay.
+								&lt;br&gt;&lt;br&gt;
+								If the source of the problem is on eBay's side, you can retry the request
+								a reasonable number of times (eBay recommends you try the request twice).
+								If the error persists, contact Developer Technical Support. Once the
+								problem has been resolved, you can resend the request in its original
+								form.
+								&lt;br&gt;&lt;br&gt;
+								If a warning occurs, warning information is returned in addition to the
+								business data. Normally, you do not need to resend the request (as the
+								original request was successful). However, depending on the cause of the
+								warning, you might need to contact the end user, or eBay, to effect a
+								long term solution to the problem.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="category" type="ns0:ErrorCategory">
+            <xsd:annotation>
+              <xsd:documentation>
+								There are three categories of errors: request errors, application 
+								errors, and system errors.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="message" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A detailed description of the condition that caused in the error.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="exceptionId" type="xsd:token">
+            <xsd:annotation>
+              <xsd:documentation>
+								Unique identifier for an exception associated with an error.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <ListBasedOn />
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="parameter" type="ns0:ErrorParameter">
+            <xsd:annotation>
+              <xsd:documentation>
+								Various warning and error messages return one or more variables that 
+								contain contextual information about the error. This is often the 
+								field or value that triggered the error.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrorMessage">
+        <xsd:annotation>
+          <xsd:documentation>
+						Information regarding an error or warning that occurred when eBay processed
+						the request. Not returned when the ack value is Success. Run-time errors are
+						not reported here, but are instead reported as part of a SOAP fault.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="error" type="ns0:ErrorData">
+            <xsd:annotation>
+              <xsd:documentation>
+								Details about a single error.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrorParameter">
+        <xsd:annotation>
+          <xsd:documentation>
+						Contextual data associated with an error.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="name" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>
+									The name of the input parameter returned with the error.
+									Inspecting the parameter (or its input value) will often aid in
+									understanding the cause of the error. Not all error messages
+									contain this value.
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <CallInfo>
+                    <AllCalls />
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:attribute>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="ErrorSeverity">
+        <xsd:annotation>
+          <xsd:documentation>
+						Indicates whether the error is a fatal error (causing the request to fail)
+						or a less severe error (a warning) that should be communicated to the user.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="SOACommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="Error">
+            <xsd:annotation>
+              <xsd:documentation>
+								eBay encountered a fatal error during the processing of the request,
+								causing the request to fail. When eBay encounters an error, it returns
+								error data instead of the requested business data. Inspect the error
+								details and resolve the problem before resubmitting the request.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Warning">
+            <xsd:annotation>
+              <xsd:documentation>
+								The request was successfully processed, but eBay encountered a non-fatal
+								error during the processing that could affect the data returned. For
+								example, eBay might have changed the value of an input field. In this
+								case, eBay returns a successful response, but it also returns a warning.
+								For best results, requests should return without warnings. Inspect the
+								warning details and resolve the problem before resubmitting the request.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="PaginationInput">
+        <xsd:annotation>
+          <xsd:documentation>
+						Controls the pagination of the result set. Child elements specify the maximum
+						number of item listings to return per call and which page of data to return.
+						Controls which listings are returned in the response, but does not control
+						the details associated with the returned items.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <xsd:typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="pageNumber" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies which subset of data (or "page") to return in the call
+								response. The number of data pages is determined by the total number of
+								items matching the request search criteria (returned in
+								paginationOutput.totalEntries) divided by the number of entries to
+								display in each response (entriesPerPage). You can return up to the first
+								100 pages of the result set by issuing multiple requests and specifying, 
+								in sequence, the pages to return.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <Default>1</Default>
+                <Max>100</Max>
+                <CallInfo>
+                  <AllCalls />
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="entriesPerPage" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies the maximum number of entries to return in a single call. If
+								the number of entries found on the specified pageNumber is less than the
+								value specified here, the number of items returned will be less than the
+								value of entriesPerPage. This indicates the end of the result set.
+								&lt;br&gt;&lt;br&gt;
+								If entriesPerPage is set to a number greater than 100, the default value,
+								100, will be used.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <Default>100</Default>
+                <Max>100</Max>
+                <CallInfo>
+                  <AllCalls />
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PaginationOutput">
+        <xsd:annotation>
+          <xsd:documentation>
+						Shows the pagination data for the item search. Child elements include the
+						page number returned, the maximum entries returned per page, the total number
+						of pages that can be returned, and the total number of entries that match the 
+						search criteria.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketPlaceServiceCommonTypeLibrary" namespace="http://www.ebay.com/marketplace/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="totalPages" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								The total number of pages of data that could be returned by repeated
+								search requests. Note that if you modify the value of
+								inputPagination.entriesPerPage in a request, the value output for
+								totalPages will change. A value of "0" is returned if eBay does not find
+								any entries that match the search criteria.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="totalEntries" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								The total number of entries found that match the search criteria in your
+								request. Depending on the input value for entriesPerPage, the response
+								might include only a portion (a page) of the entire result set. A value
+								of "0" is returned if eBay does not find any entries that match the
+								search criteria.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="pageNumber" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								The subset of item data returned in the current response. Search results
+								are divided into sets, or "pages," of item data. The number of pages is
+								equal to the total number of entries matching the search criteria divided
+								by the value specified for entriesPerPage in the request. The response
+								for a request contains one "page" of data.
+								&lt;br&gt; &lt;br&gt;
+								This returned value indicates the page number of data returned (a
+								subset of the complete result set). If this field contains 1, the
+								response contains the first page of item data (the default). If the value
+								returned in totalEntries is less than the value for entriesPerPage,
+								pageNumber returns 1 and the response contains the entire result set.
+								&lt;br&gt; &lt;br&gt;
+								The value of pageNumber is normally equal to the value input for
+								paginationInput.pageNumber. However, if the number input for pageNumber
+								is greater than the total possible pages of output, eBay returns the last
+								page of item data in the result set, and the value for pageNumber is set
+								to the respective (last) page number.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="entriesPerPage" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								The maximum number of items that can be returned in the response. This
+								number is always equal to the value input for
+								paginationInput.entriesPerPage.
+								&lt;br&gt; &lt;br&gt;
+								The end of the result set has been reached if the number specified for
+								entriesPerPage is greater than the number of items found on the specified
+								pageNumber. In this case, there will be fewer items returned than the
+								number specified in entriesPerPage. This can be determined by comparing
+								the entriesPerPage value with the value returned in the count attribute
+								for the searchResult field.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompatibilitySort">
+        <xsd:annotation>
+          <xsd:documentation>
+						Type to specify order for sorting compatibility properties.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="sortOrder" type="ns0:SortOrder">
+            <xsd:annotation>
+              <xsd:documentation>
+								The property with its associated sort order, ascending or descending.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="sortPriority" type="ns0:SortPriority">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates where in the sequence of ordering the property should ordered.
+								There are five sorting steps, Sort1 through Sort5. When a property is
+								assigned Sort1 as its sort priority, its values are sorted first. Values
+								for the property assigned Sort2, are sorted second, and so on.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="OrderType">
+        <xsd:annotation>
+          <xsd:documentation>
+						Defines the order type as Ascending or Descending
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Ascending">
+            <xsd:annotation>
+              <xsd:documentation>
+								The results will be sorted by the specified attribute in ascending (low 
+								to high) order.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Descending">
+            <xsd:annotation>
+              <xsd:documentation>
+								The results will be sorted by the specified attribute in descending (high 
+								to low) order.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="SortOrder">
+        <xsd:annotation>
+          <xsd:documentation>
+						Sort order input for the result set. Any of the searchable properties can be
+						used for property name and order can be either Ascending or Descending.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="propertyName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Output can be sorted by one or more property names. You can look these
+								values up using the &lt;b class="con"&gt;getProductSearchNames&lt;/b&gt;
+								call in the Product Metadata API.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>100</MaxLength>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="order" type="ns0:OrderType">
+            <xsd:annotation>
+              <xsd:documentation>
+								Order of the sort, either Ascending or Descending.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <Default>Descending</Default>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SortPriority">
+        <xsd:annotation>
+          <xsd:documentation>
+						Specifies the order in which properties will considered for sorting.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services" />
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="Sort1">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies that the associated property should be sorted first.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Sort2">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies that the associated property should be sorted second.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Sort3">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies that the associated property should be sorted third.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Sort4">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies that the associated property should be sorted fourth.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Sort5">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies that the associated property should be sorted fifth.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="findCompatibilitiesBySpecificationRequest" type="ns0:FindCompatibilitiesBySpecificationRequest" />
+      <xsd:element name="findCompatibilitiesBySpecificationResponse" type="ns0:FindCompatibilitiesBySpecificationResponse" />
+      <xsd:complexType name="FindCompatibilitiesBySpecificationRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This operation returns all the compatiblilities for a given specification.
+						User can constrain the output further by specifiying the compatibility
+						propertiesthat they are interested in.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Retrieves compatible applications for a product based on its 
+							specifications.
+						</Summary>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="categoryId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Category ID for which we want to find out the compatibility details
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="compatibilityPropertyFilter" type="ns0:PropertyValue">
+                <xsd:annotation>
+                  <xsd:documentation>
+										This filter is used to restrict the number of compatible vehicles
+										that can be returned. Properties that can be used here include Make,
+										Model, Year and Trim
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="specification" type="ns0:PropertyValue">
+                <xsd:annotation>
+                  <xsd:documentation>
+										The specifications for which we need the compatibility. Examples
+										include Aspect Ratio, Section Width etc.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="dataSet" type="xsd:token">
+                <xsd:annotation>
+                  <xsd:documentation>
+										This will define what are properties that will be returned for this
+										catelog-enabled category. 
+										&lt;dl&gt;
+										&lt;dt&gt;
+											&lt;strong&gt;Dataset values:&lt;/strong&gt;
+										&lt;/dt&gt;
+										&lt;dt&gt;
+											DisplayableProductDetails
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properies for use in a user interface to describe products.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											DisplayableSearchResults
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in results for product searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Searchable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties for use in searches.
+										&lt;/dd&gt;
+										&lt;dt&gt;
+											Sortable
+										&lt;/dt&gt;
+										&lt;dd&gt;
+											Properties that are suitable for sorting.
+										&lt;/dd&gt;
+										&lt;/dl&gt;
+										User can either enter dataset name or enter individual property names
+										(datasetPropertyName) from the dataset. Only one should be preset at 
+										a time.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <ListBasedOn />
+                    <Default>
+                    </Default>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="datasetPropertyName" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										User can either enter dataset name or enter individual property names
+										from the dataset. Only one should be preset at a time.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="exactMatch" type="xsd:boolean">
+                <xsd:annotation>
+                  <xsd:documentation>
+										For certain specification properties the compatibility is defined not
+										by an exact match but by an expanded match on the input value by
+										greater or lesser values as well. E.g For Load Index a compatible
+										vehicle is the one which has a load index requirement which is less
+										than or equal to the input. By default we will do an expanded
+										compatibility match whenever it applies. However if you need to do
+										only exact match then you can specify that using this input.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <Default>false</Default>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="paginationInput" type="ns0:PaginationInput">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Controls the pagination of the result set. Child elements specify the
+										maximum number of products to return per call and the page of
+										data to return. Controls the number of products returned in the
+										response, but does not specify the amount of data to return for each
+										product.
+										&lt;br&gt;&lt;br&gt;
+										&lt;span class="tablenote"&gt;&lt;strong&gt;Note:&lt;/strong&gt; 
+										No more than 10,000 products can be retrieved for a given search, 
+										regardless of how many matches are found. This limit is enforced 
+										by the maximum page number allowed (100) and the maximum entries per 
+										page allowed (20). &lt;/span&gt;
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="sortOrder" type="ns0:CompatibilitySort">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Sort Order for the result set. Any of the searchable property can be
+										used to specify the sort order. If no sort order is specified then
+										default sort order(popularity descending) will be applied.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FindCompatibilitiesBySpecificationResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for the Compatibility by specification
+						operation output.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="paginationOutput" type="ns0:PaginationOutput">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Sort Order for the result set. Any of the searchable property can be
+										used to specify the sort order. If no sort order is specified then
+										default sort order(popularity descending) will be applied.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="compatibilityDetails" type="ns0:CompatibilityDetails">
+                <xsd:annotation>
+                  <xsd:documentation>
+										List of compatibilties.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>findCompatibilitiesBySpecification</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="CompatibilityDetails">
+        <xsd:annotation>
+          <xsd:documentation>
+						Name-Value pairs for each compatiblility property.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="compatibilityProperty" type="ns0:PropertyValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Name-Value pairs for each compatiblility property.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Notes">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for notes related to a product in the eBay catalog.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="noteDetails" type="ns0:PropertyValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Additional comments about the product in the form of name-value pairs.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NumericValue">
+        <xsd:annotation>
+          <xsd:documentation>
+						This class holds a numeric value
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="value" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A numeric value. For example, physical dimensions of a product, such as height or weight, are specified as nummeric values. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="unitOfMeasurement" type="xsd:token">
+            <xsd:annotation>
+              <xsd:documentation>
+								Unit of measure for a numeric value. 
+								
+								&lt;dl&gt;
+								&lt;dt&gt;
+								&lt;b&gt;Allowed values:&lt;/b&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									bps
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Bits per second. A unit of data transmission.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kbps
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilobits per second. A unit of data transmission.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									bit
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Binary digit. A unit of information storage.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									byte
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									An ordered collection of bits. A unit of information 
+									storage equal to 8 bits in most contexts.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kb
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilobit. A unit of information storage equal to 1024 bits.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									MB
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megabyte. A unit of information storage equal to one million bytes. 
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									mW
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megawatt. A unit of power equal to one million watts.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									W
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Watt. The base SI unit of power.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Hz
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Hertz. A unit of frequency equal to one cycle per second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									kHz
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Kilohertz. A unit of frequency equal to 1,000 cycles per second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									m
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Meter. The base unit of distance.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									mm
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Megameter. A unit of distance equal to one million meters.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									rph
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Revolutions per hour. A unit of frequency. 
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									hr
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Hour. A unit of time equal to 3,600 seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									min
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Minute. A unit of time equal to 60 seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									ms
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Microsecond. A unit of time equal to one millionth of a second.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									ns
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Nanosecond. A unit of time equal to 10&lt;sup&gt;-9&lt;/sup&gt; 
+									seconds.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									sec
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Seconds. The base unit of time.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									g
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Grams. A unit of mass equal to one one-thousandth of the SI base unit, 
+									the kilogram.
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									lbs
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									Pounds. The base Imperial unit of mass.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+								
+								The allowed units of measure do not apply to all numeric values. For
+								example, when specifying the number of doors, unitOfMeasurement is not
+								needed.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <ListBasedOn />
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Product">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container type for product data.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="productIdentifier" type="ns0:ProductIdentifier">
+            <xsd:annotation>
+              <xsd:documentation>
+								The eBay produdt ID (ePID) or external IDs associated with the product.
+								Use the Reference value as input to search for the same product in the
+								future, or use the ISBN, EAN, or UPC value (if returned). The ISBN, EAN,
+								and UPC values can also be useful as keys if your application is
+								comparing products across different sites. Always returned when Product
+								is returned.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="stockPhotoURL" type="ns0:StockPhotoURL">
+            <xsd:annotation>
+              <xsd:documentation>
+								Thumbnail and standard stockphoto URLs.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="productDetails" type="ns0:PropertyValue">
+            <xsd:annotation>
+              <xsd:documentation>
+								Details about the product in the form of name-value pairs.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="productStatus" type="ns0:ProductStatus">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates whether or not a product is disabled for selling, product 
+								reviews, or use on Half.com.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="compatibilityCount" type="xsd:int">
+            <xsd:annotation>
+              <xsd:documentation>
+								The quantity of compatibilities that have been specified for the product. 
+								When returned, indicates that the product is Parts Compatibility eanbled.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <TagStatus>ComingSoon</TagStatus>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="type" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates if a product is the top or main product in a family (Head) or a
+								variant of the head product (Member). If a product is not part of a
+								product family, it is also the Head.
+								&lt;br&gt;&lt;br&gt;
+								Sometimes several versions (or editions) of a product may be available.
+								All versions of the same product are considered to be part of the same
+								product family. Some product families may contain only one product;
+								others may contain many products.
+								&lt;dl&gt;
+								&lt;dt&gt;
+								&lt;b&gt;Allowed values:&lt;/b&gt;
+								&lt;/dt&gt;
+								&lt;dt&gt;
+									Head
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The product is the the head of the product family. 
+								&lt;/dd&gt;
+								&lt;dt&gt;
+									Member
+								&lt;/dt&gt;
+								&lt;dd&gt;
+									The product is a variant of the head product.
+								&lt;/dd&gt;
+								&lt;/dl&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="notes" type="ns0:Notes">
+            <xsd:annotation>
+              <xsd:documentation>
+								Optional notes that provide additional information about the product,
+								such as the placement of the part or accessory on a vehicle or the type
+								of vehicle a part fits.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>
+						Type could be ePID, MementoString as well as ISBN, UPC, EAN, Brand_MPN.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="ePID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								eBay Product ID. eBay's global reference ID for a catalog product. On the
+								eBay Web site, this is known as the "ePID". A reference ID is a fixed
+								reference to a product (regardless of version). One reference ID can be
+								associated with multiple ProductID values. The value should start with
+								"EPID", for example "EPID30971438" (without quotes). You can find
+								reference IDs for products by using GetProducts (or FindProducts in the
+								Shopping API). You can also find the ePID on eBay's Web site.
+								&lt;br&gt;&lt;br&gt;
+								If the primary and secondary categories are both catalog-enabled, this ID
+								should correspond to the primary category (not the secondary category).
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>38</MaxLength>
+                <CallInfo>
+                  <CallName>getProductCompatibilities</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="ISBN" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								ISBN-10 or ISBN-13 value for books. (The string length of ProductID
+								indicates whether the ID is 10 or 13 characters.) If you know a book's
+								ISBN, you can use this instead of the eBay CatalogItem or Reference ID to
+								search for that book.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>13</MaxLength>
+                <CallInfo>
+                  <CallName>getProductCompatibilities</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="UPC" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								eBay Product ID. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>12</MaxLength>
+                <CallInfo>
+                  <CallName>getProductCompatibilities</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="EAN" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								European Article Number (EAN) value for books. (This is used more
+								commonly in European countries.) If you know a book's EAN, you can use
+								this instead of the eBay CatalogItem or Reference ID to search for that
+								book.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>13</MaxLength>
+                <CallInfo>
+                  <CallName>getProductCompatibilities</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="productId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								eBay's unique identifier for a specific version of a product. This is the
+								long alphanumeric ID that is returned from GetProductSearchResults and
+								related calls. See the Trading API Guide for information about finding
+								this type of product ID. (For the shorter ePID value that is displayed on
+								the eBay Web site, see ProductReferenceID instead.)
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>4000</MaxLength>
+                <CallInfo>
+                  <CallName>getProductCompatibilities</CallName>
+                  <CallName>getProductDetails</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductStatus">
+        <xsd:annotation>
+          <xsd:documentation>
+						This will indicate if the product is disabled for the
+						specific application like selling flow, review flow or
+						half sell flow.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="excludeForeBaySelling" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>
+								Product cannot be used in selling flows on eBay.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <Default>false</Default>
+                  <AllCalls />
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="excludeForeBayReviews" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>
+								Product cannot be used in product review flows.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <Default>false</Default>
+                  <AllCalls />
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="excludeForHalfSelling" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>
+								Product cannot be used in selling flows on half.com.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <Default>false</Default>
+                  <AllCalls />
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PropertyValue">
+        <xsd:annotation>
+          <xsd:documentation>
+						A property name and corresponding value (a name/value pair).
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="propertyName" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								This is the canonical name of the property. Used to identify a property
+								within a catalog that this category belongs to.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <Context>compatibilityPropertyFilter</Context>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <Context>specification</Context>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="ns0:Value">
+            <xsd:annotation>
+              <xsd:documentation>
+								A value for the property.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <Context>compatibilityPropertyFilter</Context>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <Context>specification</Context>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>Yes</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StringValue">
+        <xsd:annotation>
+          <xsd:documentation>
+						This class holds a String value
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="value" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A string value.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="URIValue">
+        <xsd:annotation>
+          <xsd:documentation>
+						This class holds a URL value
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="value" type="xsd:anyURI">
+            <xsd:annotation>
+              <xsd:documentation>
+								As part of request, this will be the URL to
+								download media file. As part of response, this
+								will be the URL where the media file is stored
+								on eBay Picture Services (EPS).
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>400</MaxLength>
+                <CallInfo>
+                  <CallName>findCompatibilitiesBySpecification</CallName>
+                  <CallName>findProducts</CallName>
+                  <CallName>findProductsByCompatibility</CallName>
+                  <CallName>getProductCompatibilities</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <AllCalls />
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Value">
+        <xsd:annotation>
+          <xsd:documentation>
+						A value can be one of the types: text (string), a number (
+					</xsd:documentation>
+          <xsd:appinfo>
+            <typeLibrarySource library="MarketplaceCatalogDomainTypeLibrary" namespace="http://www.ebay.com/marketplace/marketplacecatalog/v1/services">
+            </typeLibrarySource>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:element name="text" type="ns0:StringValue">
+              <xsd:annotation>
+                <xsd:documentation>
+									For string value type.
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <CallInfo>
+                    <CallName>findCompatibilitiesBySpecification</CallName>
+                    <CallName>findProducts</CallName>
+                    <CallName>findProductsByCompatibility</CallName>
+                    <CallName>getProductCompatibilities</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>addProducts</CallName>
+                    <RequiredInput>Conditionally</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <AllCalls />
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="number" type="ns0:NumericValue">
+              <xsd:annotation>
+                <xsd:documentation>
+									For numeric value type.
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <CallInfo>
+                    <CallName>findCompatibilitiesBySpecification</CallName>
+                    <CallName>findProducts</CallName>
+                    <CallName>findProductsByCompatibility</CallName>
+                    <CallName>getProductCompatibilities</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>addProducts</CallName>
+                    <RequiredInput>Conditionally</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <AllCalls />
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="URL" type="ns0:URIValue">
+              <xsd:annotation>
+                <xsd:documentation>
+									For URL value type.
+								</xsd:documentation>
+                <xsd:appinfo>
+                  <CallInfo>
+                    <CallName>findCompatibilitiesBySpecification</CallName>
+                    <CallName>findProducts</CallName>
+                    <CallName>findProductsByCompatibility</CallName>
+                    <CallName>getProductCompatibilities</CallName>
+                    <RequiredInput>No</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <CallName>addProducts</CallName>
+                    <RequiredInput>Conditionally</RequiredInput>
+                  </CallInfo>
+                  <CallInfo>
+                    <AllCalls />
+                    <Returned>Conditionally</Returned>
+                  </CallInfo>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:choice>
+          <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="addProducts">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addProductsResponse" type="ns0:AddProductsResponse" />
+      <xsd:element name="getProductSubmissions">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProductSubmissionsResponse" type="ns0:GetProductSubmissionsResponse" />
+      <xsd:element name="addProductsRequest" type="ns0:AddProductsRequest" />
+      <xsd:element name="getProductSubmissionsRequest" type="ns0:GetProductSubmissionsRequest" />
+      <xsd:complexType name="AddProductsRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This is a request object containing input for adding one or more products to 
+						the eBay catalog.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Adds products to the eBay catalog.
+						</Summary>
+            <RelatedCalls>getProductSubmissions</RelatedCalls>
+            <RelatedCallsOther>
+              <ApiNickname>Trading</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/XML/docs/Reference/eBay</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>GetCategoryFeatures</Name>
+                <Summary>Returns information about the features that are applicable to different categories, such as Product Creation.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+            <RelatedCallsOther>
+              <ApiNickname>ProductMetadata</ApiNickname>
+              <ApiCallRefBaseURL>http://developer.ebay.com/DevZone/product-metadata/CallRef</ApiCallRefBaseURL>
+              <RelatedCall>
+                <Name>getProductMetadataBulk</Name>
+                <Summary>	Retrieves product metadata needed to add a product to the eBay catalog for the specified category.</Summary>
+              </RelatedCall>
+            </RelatedCallsOther>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="unbounded" name="addProductRequest" type="ns0:ProductSubmission">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Information about a single product to be added to the eBay catalog. The product information must include a category ID and a set of name-value properties that describe the product.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxOccurs>10</MaxOccurs>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="clientBatchId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Identifier to help users match requests and responses in multi-
+										threaded applications. When provided in the request, the value is 
+										returned in the corresponding response.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxLength>64</MaxLength>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ProductSubmission">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for all the information that describes a product.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="invocationId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										A unique identifer for a given product request. Use invocationId to
+										prevent the submission of duplicate data. In the event of a partial
+										failure, the invocation ID can also be used to identify a product 
+										request that did not succeed.
+										&lt;br&gt;&lt;br&gt;
+										If the same invocationId is passed in more than once in the same 
+										request, then an error will be returned. The identifier must be a 
+										number.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <Min>-9223372036854775808</Min>
+                    <Max>9223372036854775807</Max>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="1" maxOccurs="1" name="categoryId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Specifies the category to which you want to add a product. 
+										Only select Electronics categories support product creation. 
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxLength>10</MaxLength>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: ProductSubmission</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="1" maxOccurs="unbounded" name="productPropertyValue" type="ns0:PropertyValue">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Name-value pairs that describe the product. 
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxOccurs>100</MaxOccurs>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>Yes</RequiredInput>
+                    </CallInfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: ProductSubmission</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                    <SeeLink>
+                      <URL>http://developer.ebay.com/DevZone/product-metadata/CallRef/getProductMetadataBulk.html</URL>
+                      <Title>getProductMetadataBulk</Title>
+                      <For>details about required and optional product properties and value constraints.</For>
+                    </SeeLink>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="media" type="ns0:Media">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Details for any media, such as images, associated with the product. 
+										Currently, images are the only supported media type. 
+										&lt;br&gt;
+										&lt;br&gt;
+										When submitting multiple images, the image specified in the first 
+										media node will be used as the stock photo for the product.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxOccurs>10</MaxOccurs>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <RequiredInput>No</RequiredInput>
+                    </CallInfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: ProductSubmission</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Media">
+        <xsd:annotation>
+          <xsd:documentation>
+						Container for details about any media used to describe a product.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="mediaIdentifier" type="ns0:MediaIdentifier">
+            <xsd:annotation>
+              <xsd:documentation>
+								A reference to the media for you product. Currently, only URLs are 
+								supported. You must specify a media identifier when you include media 
+								details for your product. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: ProductSubmission</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="mediaType" type="ns0:MediaType">
+            <xsd:annotation>
+              <xsd:documentation>
+								The kind of media used to describe your product. Currently, images are 
+								the only supported media type. You must specify a media type when you 
+								include media details for your product.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: ProductSubmission</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MediaIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>
+						Contains a reference that uniquely identifies the media for the product.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A URL to the media file for your product. You must specify a URL when you 
+								include media details for your product.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <MaxLength>400</MaxLength>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: ProductSubmission</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddProductsResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Returns the processing status for products submitted with addProducts.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="unbounded" name="addProductResponse" type="ns0:AddProductResponse">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Status for an individual product submission. 
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="clientBatchId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Identifier to help users match requests and responses in 
+										multi-threaded applications. Simple pass-thru of identifier 
+										provided in the request. Only returned if it is specified in the 
+										request.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <MaxLength>???</MaxLength>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="AddProductResponse">
+        <xsd:annotation>
+          <xsd:documentation>
+						Returns the processing status for an individual product submitted with 
+						addProducts.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="invocationId" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+										A unique identifer for a given product submission, corresponding to a 
+										specific product request. Only returned if it was specified in the addProductRequest when the product was submitted with addProducts.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <Min>-9223372036854775808</Min>
+                    <Max>9223372036854775807</Max>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="1" maxOccurs="1" name="status" type="ns0:ProductSubmissionStatus">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Processing/acceptance status for a product submission.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>addProducts</CallName>
+                      <Returned>Always</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ProductSubmissionStatus">
+        <xsd:annotation>
+          <xsd:documentation>
+						Status details for a single product submission.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="productSubmissionId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								A unique [how unique?] identifier for a specific product submission. 
+								[When is this not returned?]
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: none</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="statusCode" type="ns0:ProductSubmissionStatusCode">
+            <xsd:annotation>
+              <xsd:documentation>
+								The state of the product submission. When a product is submitted, its 
+								status is Pending while eBay reviews the submission. Product submissions 
+								may remain in a Pending state for several hours. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <Returned>Always</Returned>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: none</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="statusReasonCode" type="ns0:ProductSubmissionStatusReasonCode">
+            <xsd:annotation>
+              <xsd:documentation>
+								Reserved for future use. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <NoCalls />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="statusReasonDetail" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								Reserved for future use.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <NoCalls />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ePID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								The eBay Product Identifier (ePID) is the unique identifier for the 
+								product in the eBay catalog. 
+								&lt;br&gt;&lt;br&gt;
+								Returned in the following conditions: 
+								&lt;ul&gt;
+								&lt;li&gt;Product successfully added or updated&amp;mdash;when a product
+								has been successfully added to or updated in the catalog (i.e., status is
+								Approved), the ePID for the new or updated product is returned.
+								&lt;/li&gt;
+								&lt;li&gt;Matching product found&amp;mdash;when the catalog already contains a product that matches the submitted product, the submission is rejected and the ePID of the existing product is returned. &lt;/li&gt;
+								&lt;/ul&gt;
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>addProducts</CallName>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <Details>outputSelector: none</Details>
+                  <Returned>Conditionally</Returned>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GetProductSubmissionsRequest">
+        <xsd:annotation>
+          <xsd:documentation>
+						This is a request object for retrieving status for one or more product 
+						submissions.
+					</xsd:documentation>
+          <xsd:appinfo>
+            <Summary>
+							Retrieves status and details for products submitted for addition to the 
+							eBay catalog.
+						</Summary>
+            <RelatedCalls>addProducts</RelatedCalls>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="productSubmissionFilter" type="ns0:ProductSubmissionFilter">
+            <xsd:annotation>
+              <xsd:documentation>
+								Restrict the scope of product submissions for which to retrieve status 
+								information. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="outputSelector" type="ns0:OutputSelector">
+            <xsd:annotation>
+              <xsd:documentation>
+										Defines what data to return, in addition to the default set of data,
+										in a response. 
+										&lt;br&gt;&lt;br&gt;
+										If you don't specify this field, eBay returns a default set of 
+										product submission status information. Use outputSelector to include 
+										the properties for the product submissions, as well. 
+										&lt;br&gt;&lt;br&gt;
+										If you specify this field, the additional fields returned can affect
+										the call's response time (performance)								
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="1" name="paginationInput" type="ns0:PaginationInput">
+            <xsd:annotation>
+              <xsd:documentation />
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="sortOption" type="ns0:SortOption">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specifies the logic for sorting the productSubmissionResponse nodes in 
+								the response. If sortOption is not specified, no sorting is applied to 
+								the response. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProductSubmissionFilter">
+        <xsd:annotation>
+          <xsd:documentation>
+						Specifies a single filter for restricting the ressult set when retrieving 
+						status on product submissions.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="filterName" type="ns0:ProductSubmissionFilterName">
+            <xsd:annotation>
+              <xsd:documentation>
+								Specify the name of the product submission filter you want to use. The 
+								productSubmissionFilter filter name must have a corresponding value. You 
+								can apply multiple productSubmissionFilter Name/Value pairs in a single 
+								request.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="filterValue" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+								The value associated with the respective product submission filter name. 
+								Allowed values and datatypes vary for a given filter name. 
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>No</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SortOption">
+        <xsd:annotation>
+          <xsd:documentation>
+						Specifies the property value to sort on and the order of the sort.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="sortType" type="ns0:SortType">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates the property value used for sorting. Currently, results can 
+								only be sorted by product submission ID. 
+								If you specify a sortOption, you must include sortType.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="sortOrder" type="ns0:OrderType">
+            <xsd:annotation>
+              <xsd:documentation>
+								This value specifies whether you want to sort search results in ascending 
+								or descending order, in conjunction with the value you specify in 
+								sortType.
+								If you specify a sortOption, you must include sortOrder.
+							</xsd:documentation>
+              <xsd:appinfo>
+                <CallInfo>
+                  <CallName>getProductSubmissions</CallName>
+                  <RequiredInput>Conditionally</RequiredInput>
+                </CallInfo>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SortType">
+        <xsd:annotation>
+          <xsd:documentation>
+						Specifies the property value to use for sorting. 
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ByProductSubmissionId">
+            <xsd:annotation>
+              <xsd:documentation>
+								Sorts the response  by the product submission ID. The sortOrder 
+								value determines whether results are returned in ascending or 
+								descending order.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="MediaType">
+        <xsd:annotation>
+          <xsd:documentation>
+						The kinds of media that can be used to describe your product.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Image">
+            <xsd:annotation>
+              <xsd:documentation>
+								Indicates that the specified media is an image.
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProductSubmissionStatusCode">
+        <xsd:annotation>
+          <xsd:documentation>
+						Catalog inclusion status for a product submission. 
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Pending">
+            <xsd:annotation>
+              <xsd:documentation>
+								The product submission is under review. 
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Approved">
+            <xsd:annotation>
+              <xsd:documentation>
+								The product submission has been approved and added to the eBay 
+								catalog. 
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Rejected">
+            <xsd:annotation>
+              <xsd:documentation>
+								The product submission was rejected. The product did not meet all 
+								acceptance criteria. 
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProductSubmissionStatusReasonCode">
+        <xsd:annotation>
+          <xsd:documentation>
+						Reserved for future use.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>
+							Reserved for future use.
+						</xsd:documentation>
+          </xsd:annotation>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProductSubmissionFilterName">
+        <xsd:annotation>
+          <xsd:documentation>
+						The name of a filter for restricting the result set when retrieving 
+						product submissions.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>
+							A simple code identifying the reason the product submission was 
+							rejected. 
+							&lt;dl&gt;
+							&lt;dt&gt;
+							&lt;b&gt;Allowed values:&lt;/b&gt;
+							&lt;/dt&gt;
+							&lt;dt&gt;
+								DateRange
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								Retrieve product submissions that were submitted within a specific range 
+								of dates. 
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								ProductSubmissionId
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The unique identifier for a single product submission.
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								SellerId
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								The seller's eBay user name. 
+							&lt;/dd&gt;
+							&lt;dt&gt;
+								SellerProductId
+							&lt;/dt&gt;
+							&lt;dd&gt;
+								A unique product ID for a product submited by the seller. 
+							&lt;/dd&gt;
+							&lt;/dl&gt;
+						</xsd:documentation>
+          </xsd:annotation>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="OutputSelector">
+        <xsd:annotation>
+          <xsd:documentation>
+						Specifies whether or not to return the product submission details, in 
+						addition to the default set of data, in a response. 
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ProductSubmission">
+            <xsd:annotation>
+              <xsd:documentation>
+								Include the product submission details in the response. These are the
+								name-value properties used to describe the product. In some cases, the
+								returned properties may vary from the submitted properties. [This was
+								mentioned in a meeting. When does this happen? Does this only happen for
+								submissions that are approved?]
+							</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="GetProductSubmissionsResponse">
+        <xsd:annotation>
+          <xsd:documentation />
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="paginationOutput" type="ns0:PaginationOutput">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Indicates the pagination of the result set. Child elements indicate
+										the page number that is returned, the maximum number of product
+										submission responses to return per page, total number of pages that
+										can be returned, and the total number of entries that match the
+										search criteria. 
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: none</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="productSubmissionResponse" type="ns0:ProductSubmissionResult">
+                <xsd:annotation>
+                  <xsd:documentation>
+										Status information about the submitted product. This information may include API errors for failed submissions (not the same as a status of rejected), status of successful submissions (i.e., pending, approved, or rejected), and product submission details (i.e., name-value properties that describe the product).
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: none</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ProductSubmissionResult">
+        <xsd:annotation>
+          <xsd:documentation>
+						TBD
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:BaseServiceResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="productSubmission" type="ns0:ProductSubmission">
+                <xsd:annotation>
+                  <xsd:documentation />
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: ProductSubmission</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element minOccurs="1" maxOccurs="1" name="status" type="ns0:ProductSubmissionStatus">
+                <xsd:annotation>
+                  <xsd:documentation>
+
+										Always returned when there are product submissions that match 
+										the request criteria.
+									</xsd:documentation>
+                  <xsd:appinfo>
+                    <CallInfo>
+                      <CallName>getProductSubmissions</CallName>
+                      <Details>outputSelector: none</Details>
+                      <Returned>Conditionally</Returned>
+                    </CallInfo>
+                  </xsd:appinfo>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findProductsByCompatibilityRequest">
+    <wsdl:part name="params" element="ns0:findProductsByCompatibilityRequest" />
+  </wsdl:message>
+  <wsdl:message name="getProductDetailsRequest">
+    <wsdl:part name="params" element="ns0:getProductDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="findProductsResponse">
+    <wsdl:part name="params" element="ns0:findProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProductDetailsResponse">
+    <wsdl:part name="params" element="ns0:getProductDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="findProductsRequest">
+    <wsdl:part name="params" element="ns0:findProductsRequest" />
+  </wsdl:message>
+  <wsdl:message name="getProductCompatibilitiesRequest">
+    <wsdl:part name="params" element="ns0:getProductCompatibilitiesRequest" />
+  </wsdl:message>
+  <wsdl:message name="findProductsByCompatibilityResponse">
+    <wsdl:part name="params" element="ns0:findProductsByCompatibilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProductCompatibilitiesResponse">
+    <wsdl:part name="params" element="ns0:getProductCompatibilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="findCompatibilitiesBySpecificationRequest">
+    <wsdl:part name="params" element="ns0:findCompatibilitiesBySpecificationRequest" />
+  </wsdl:message>
+  <wsdl:message name="findCompatibilitiesBySpecificationResponse">
+    <wsdl:part name="params" element="ns0:findCompatibilitiesBySpecificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="addProductsRequest">
+    <wsdl:part name="params" element="ns0:addProductsRequest" />
+  </wsdl:message>
+  <wsdl:message name="addProductsResponse">
+    <wsdl:part name="params" element="ns0:addProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProductSubmissionsRequest">
+    <wsdl:part name="params" element="ns0:getProductSubmissionsRequest" />
+  </wsdl:message>
+  <wsdl:message name="getProductSubmissionsResponse">
+    <wsdl:part name="params" element="ns0:getProductSubmissionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProductServicePortType">
+    <wsdl:operation name="findProducts">
+      <wsdl:input name="findProductsInCatalogRequest" message="ns0:findProductsRequest" />
+      <wsdl:output message="ns0:findProductsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findProductsByCompatibility">
+      <wsdl:input message="ns0:findProductsByCompatibilityRequest" />
+      <wsdl:output message="ns0:findProductsByCompatibilityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductDetails">
+      <wsdl:input message="ns0:getProductDetailsRequest" />
+      <wsdl:output message="ns0:getProductDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductCompatibilities">
+      <wsdl:input message="ns0:getProductCompatibilitiesRequest" />
+      <wsdl:output message="ns0:getProductCompatibilitiesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findCompatibilitiesBySpecification">
+      <wsdl:documentation>
+      </wsdl:documentation>
+      <wsdl:input message="ns0:findCompatibilitiesBySpecificationRequest" />
+      <wsdl:output message="ns0:findCompatibilitiesBySpecificationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProducts">
+      <wsdl:input message="ns0:addProductsRequest" />
+      <wsdl:output message="ns0:addProductsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductSubmissions">
+      <wsdl:input message="ns0:getProductSubmissionsRequest" />
+      <wsdl:output message="ns0:getProductSubmissionsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductServiceSOAP12Binding" type="ns0:ProductServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findProducts">
+      <soap12:operation soapAction="urn:findProducts" style="document" />
+      <wsdl:input name="findProductsInCatalogRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductDetails">
+      <soap12:operation soapAction="urn:getProductDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findProductsByCompatibility">
+      <soap12:operation soapAction="urn:findProductsByCompatibility" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductCompatibilities">
+      <soap12:operation soapAction="urn:getProductCompatibilities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCompatibilitiesBySpecification">
+      <soap12:operation soapAction="urn:findCompatibilitiesBySpecification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductSubmissions">
+      <soap12:operation soapAction="urn:getProductSubmissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProducts">
+      <soap12:operation soapAction="urn:addProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductService">
+    <wsdl:documentation>
+      <Version>1.4.0</Version>
+    </wsdl:documentation>
+    <xsd:annotation>
+      <xsd:appinfo>
+        <tns:version>1.4.0</tns:version>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <wsdl:port name="ProductServiceSOAP12port_http" binding="ns0:ProductServiceSOAP12Binding">
+      <soap12:address location="http://svcs.ebay.com/services/marketplacecatalog/ProductService/v1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

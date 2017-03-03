@@ -1,0 +1,10 @@
+﻿{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "Json.NET": "9.0.1",
+        "Microsoft.AspNet.WebApi.Client": "5.2.3"
+      }
+    }
+  }
+}
