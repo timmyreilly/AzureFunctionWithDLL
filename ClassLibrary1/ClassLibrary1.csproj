@@ -30,7 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eBay.Service, Version=3.981.0.0, Culture=neutral, PublicKeyToken=1d9d786a5932eaf0, processorArchitecture=MSIL">
+      <HintPath>..\packages\eBay.3.981.0\lib\net40\eBay.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -44,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\eBayServiceReference1\Reference.cs">
+    <Compile Include="Service References\TesteBaySoap\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -55,58 +60,869 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.AddProductsResponse.datasource">
+    <None Include="packages.config" />
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddDisputeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.addProductsResponse1.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddDisputeResponseResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.FindCompatibilitiesBySpecificationResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddDisputeResponseResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.findCompatibilitiesBySpecificationResponse1.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddDisputeResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.findProductsByCompatibilityResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddFixedPriceItemResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.FindProductsResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddFixedPriceItemResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.findProductsResponse1.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemFromSellingManagerTemplateResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.getProductCompatibilitiesResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemFromSellingManagerTemplateResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.GetProductCompatiblitiesResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.GetProductDetailsResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.getProductDetailsResponse1.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.GetProductSubmissionsResponse.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddItemsResponseType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ClassLibrary1.eBayServiceReference1.getProductSubmissionsResponse1.datasource">
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessageAAQToPartnerResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\eBayServiceReference1\ProductService.wsdl" />
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessageAAQToPartnerResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessageRTQResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessageRTQResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessagesAAQToBidderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddMemberMessagesAAQToBidderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddOrderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSecondChanceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSecondChanceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerInventoryFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerInventoryFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerProductResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddSellingManagerTemplateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddToItemDescriptionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddToItemDescriptionResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddToWatchListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddToWatchListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddTransactionConfirmationItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.AddTransactionConfirmationItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.CompleteSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.CompleteSaleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ConfirmIdentityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ConfirmIdentityResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.CustomSecurityHeaderType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteMyMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteMyMessagesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerInventoryFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerInventoryFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerItemAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerItemAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerProductResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerTemplateAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerTemplateAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DeleteSellingManagerTemplateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DisableUnpaidItemAssistanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.DisableUnpaidItemAssistanceResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndFixedPriceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndFixedPriceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.EndItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ExtendSiteHostedPicturesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ExtendSiteHostedPicturesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.FetchTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.FetchTokenResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAccountResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAdFormatLeadsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAdFormatLeadsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAllBiddersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetAllBiddersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetApiAccessRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetApiAccessRulesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetBestOffersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetBestOffersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetBidderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetBidderListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoriesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoryFeaturesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoryFeaturesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoryMappingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategoryMappingsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategorySpecificsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCategorySpecificsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetChallengeTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetChallengeTokenResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCharitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetCharitiesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetClientAlertsAuthTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetClientAlertsAuthTokenResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetContextualKeywordsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetContextualKeywordsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetDescriptionTemplatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetDescriptionTemplatesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetDisputeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetDisputeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GeteBayDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GeteBayDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GeteBayOfficialTimeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GeteBayOfficialTimeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetFeedbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetFeedbackResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemsAwaitingFeedbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemsAwaitingFeedbackResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemShippingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemShippingResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemTransactionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetItemTransactionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMemberMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMemberMessagesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMessagePreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMessagePreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBayBuyingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBayBuyingResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBayRemindersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBayRemindersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBaySellingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyeBaySellingResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetMyMessagesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetNotificationPreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetNotificationPreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetNotificationsUsageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetNotificationsUsageResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetOrdersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetOrdersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetOrderTransactionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetOrderTransactionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetPromotionalSaleDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetPromotionalSaleDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerDashboardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerDashboardResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerEventsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerEventsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerPaymentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerPaymentsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerTransactionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellerTransactionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerAlertsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerAlertsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerEmailLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerEmailLogResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerInventoryFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerInventoryFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerInventoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerInventoryResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerItemAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerItemAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerSaleRecordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerSaleRecordResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerSoldListingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerSoldListingsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerTemplateAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerTemplateAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerTemplatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSellingManagerTemplatesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSessionIDResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetShippingDiscountProfilesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetShippingDiscountProfilesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreCategoryUpdateStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreCategoryUpdateStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreCustomPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreCustomPageResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreOptionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStorePreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStorePreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetStoreResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSuggestedCategoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetSuggestedCategoriesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetTaxTableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetTaxTableResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetTokenStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetTokenStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserContactDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserContactDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserDisputesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserDisputesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserPreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserPreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetUserResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetVeROReasonCodeDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetVeROReasonCodeDetailsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetVeROReportStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.GetVeROReportStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.IssueRefundResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.IssueRefundResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.LeaveFeedbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.LeaveFeedbackResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.MoveSellingManagerInventoryFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.MoveSellingManagerInventoryFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.PlaceOfferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.PlaceOfferResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RelistFixedPriceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RelistFixedPriceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RelistItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RelistItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RemoveFromWatchListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RemoveFromWatchListResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RespondToBestOfferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RespondToBestOfferResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RespondToFeedbackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RespondToFeedbackResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseCheckoutStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseCheckoutStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseFixedPriceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseFixedPriceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseInventoryStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseInventoryStatusResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseMyMessagesFoldersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseMyMessagesFoldersResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseMyMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseMyMessagesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerInventoryFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerInventoryFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerProductResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerSaleRecordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerSaleRecordResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ReviseSellingManagerTemplateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RevokeTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.RevokeTokenResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SaveItemToSellingManagerTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SaveItemToSellingManagerTemplateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SellerReverseDisputeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SellerReverseDisputeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SendInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SendInvoiceResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetMessagePreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetMessagePreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetNotificationPreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetNotificationPreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetPromotionalSaleListingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetPromotionalSaleListingsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetPromotionalSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetPromotionalSaleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerFeedbackOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerFeedbackOptionsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerItemAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerItemAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerTemplateAutomationRuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetSellingManagerTemplateAutomationRuleResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetShippingDiscountProfilesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetShippingDiscountProfilesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreCategoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreCategoriesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreCustomPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreCustomPageResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStorePreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStorePreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetStoreResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetTaxTableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetTaxTableResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetUserNotesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetUserNotesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetUserPreferencesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.SetUserPreferencesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.UploadSiteHostedPicturesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.UploadSiteHostedPicturesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ValidateChallengeInputResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ValidateChallengeInputResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ValidateTestUserRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.ValidateTestUserRegistrationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddFixedPriceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddFixedPriceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddSecondChanceItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyAddSecondChanceItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyRelistItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VerifyRelistItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VeROReportItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ClassLibrary1.TesteBaySoap.VeROReportItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TesteBaySoap\ebaySvc.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\eBayServiceReference1\" />
+    <WCFMetadataStorage Include="Service References\TesteBaySoap\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\eBayServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\TesteBaySoap\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\eBayServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\TesteBaySoap\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\eBayServiceReference1\Reference.svcmap">
+    <None Include="Service References\TesteBaySoap\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
