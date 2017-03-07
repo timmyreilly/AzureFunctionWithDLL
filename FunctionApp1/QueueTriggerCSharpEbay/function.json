@@ -5,7 +5,7 @@
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "ebayincoming",
+      "queueName": "ebaypost",
       "connection": "AzureWebJobsStorage"
     }
   ]
